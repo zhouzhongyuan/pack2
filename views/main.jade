@@ -1,0 +1,15 @@
+extends layout
+block link
+    -var selected = '首页';
+block content
+    h5(class='status')
+    div(class='taskNum')
+    div(class='os')
+    div(class='process')
+    div(class='readme')
+        h5 使用说明
+        li 新建打包任务: 点击 顶部导航的"新增"
+        li 下载打包文件: "历史任务"中的apk下载
+        li 再次打包: "历史任务"中的再次打包
+    script(src='../yigomobile/public/js/main.js')
+

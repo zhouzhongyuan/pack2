@@ -1,0 +1,86 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+form{
+    max-width: 600px;
+    margin: 10px auto;
+}
+button[type="submit"]{
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eott); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+    url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+    url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+
+.green{
+    background-color: #26B064;
+    box-shadow: inset 0 1px 0 0 #33CC78;
+}
+.status,
+.os,
+.taskNum,
+.readme{
+    width: 50%;
+    margin: 20px auto;
+}
+.status-free:before,
+.status-busy:before{
+    background-color: #1BC656;
+    color: #1BC656;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    content: '';
+}
+.status-free {
+    color: #1BC656;
+}
+.status-busy{
+    color: #FFBB50;
+}
+.status-busy:before {
+    background-color: #FFBB50;
+}
+
+button{
+    width:100%;
+}

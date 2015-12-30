@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-geoloaction-baidu-android",
+  "version": "1.0.0",
+  "description": "cordova plugin geoloaction with baidu SDK for android only",
+  "cordova": {
+    "id": "cordova-plugin-geoloaction-baidu-android",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhouzhongyuan/cordova-plugin-geoloaction-baidu-android"
+  },
+  "keywords": [
+    "cordova",
+    "map",
+    "baidu",
+    "geolocation"
+  ],
+  "author": "Zhongyuan Zhou",
+  "license": "MIT"
+}

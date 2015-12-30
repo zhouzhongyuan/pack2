@@ -1,0 +1,26 @@
+extends layout
+block link
+    -var selected = '历史任务';
+block content
+    table(class='striped')
+        thead
+            tr
+                td 名称
+                td 创建日期
+                td 状态
+                td 下载地址
+                td 再次打包
+                td 删除任务
+        tbody
+    script(src='../yigomobile/public/js/history.js')
+    <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
+
+
