@@ -5,11 +5,6 @@ var co  = require('co');
 var _ = require('underscore');
 var querylib = require('./querylib');
 var task  = require('../models/task');
-//router.get('/', function *(next) {
-//    yield this.render('add');
-//    //this.body = {'message':"ok"};
-//    yield next;
-//});
 router.all('/add', function *(next) {
     "use strict";
     if(this.query.taskid){

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     getTasks();
     pagination(1);
-    setInterval(getTasks,20*1000);
+    setInterval(getTasks,100*1000);
     }
 );
 

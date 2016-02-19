@@ -22,48 +22,72 @@ var NavListItem = React.createClass({
         event.preventDefault();
         this.props.onSelect(this.props.uid);
     },
-
+    getDefaultProps : function () {
+        return {
+            activeTabUid : 'Home'
+        };
+    },
     render: function() {
-        var className = React.addons.classSet({
-            active: this.props.active
-        });
-
+        //var className = React.addons.classSet({
+        //    active: this.props.active
+        //});
+        console.log(this.props.active);
+        var className = this.props.active?'active':null;
         return (
             <li className={className}>
-                <a href={"#" + this.props.url} onClick={this.handleClick}>
-                    {this.props.text}
+                <a href={"#" + this.props.uid} onClick={this.handleClick}>
+                    {this.props.uid}
                 </a>
             </li>
         );
     }
 });
+
+
 var NavList = React.createClass({
-    getInitialState: function() {
-        return {active: false};
-    },
     getDefaultProps : function () {
         return {
-            title : 'Hello World'
+            activeTabUid : 'Home'
         };
     },
-    handleClick: function(event) {
-        console.log(event);
-        this.setState({active: !this.state.active});
-    },
-    render: function(){
-        var text = this.state.active ? 'like' : 'haven\'t liked';
+    render: function() {
+        var tabNodes = this.props.tabs.map(function(tab) {
+            console.log(this.props.activeTabUid, tab.uid);
+            return (
+                <NavListItem
+                    active={this.props.activeTabUid === tab.uid}
+                    key={tab.uid}
+                    onSelect={this.props.navigateToTab}
+                    uid={tab.uid} />
+            );
+        }, this);
+
         return (
-            <ol onClick={this.handleClick}>
-                {
-                    names.map(function (name) {
-                        return <a href='#' className='' >{name.text}{text}</a>
-                        //return <a href={name.url} >{name.text}{text}</a>
-                    })
-                }
-            </ol>
+            <ul className="nav nav-tabs">
+                {tabNodes}
+            </ul>
         );
     }
 });
+
+var navigateToTab = function(data){
+    console.log(this,data);
+};
+ReactDOM.render(
+    //<Nav  />,
+    <NavList
+        navigateToTab={navigateToTab}
+        tabs={[{uid: "Home"}, {uid: "Contact"}]} />,
+    document.getElementById('example')
+);
+
+
+
+
+
+
+
+
 //logo
 var NavLogo = React.createClass({
     render: function() {
@@ -79,27 +103,5 @@ var Nav = React.createClass({
                 <NavList  />
             </div>
         )
-    }
-});
-ReactDOM.render(
-    <Nav  />,
-    document.getElementById('example')
-);
-
-
-var LikeButton = React.createClass({
-    getInitialState: function() {
-        return {liked: false};
-    },
-    handleClick: function(event) {
-        this.setState({liked: !this.state.liked});
-    },
-    render: function() {
-        var text = this.state.liked ? 'like' : 'haven\'t liked';
-        return (
-            <p onClick={this.handleClick}>
-                You {text} this. Click to toggle.
-            </p>
-        );
     }
 });
