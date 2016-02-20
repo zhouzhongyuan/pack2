@@ -36,22 +36,28 @@ block content
                 label(for='appPackageName' data-error="wrong" data-success="right") 包名
         div(class='col s12 row input-field') 打包类型
             p
-                input(type='radio' class="with-gap" id='release' value='release' name='appBuildType')
+                input(type='radio' class="with-gap" id='release' value='release' name='appBuildType' checked= task.appBuildType=='release')
                 label(for='release') release
             p
-                input(type='radio' class="with-gap" id='debug' value='debug' name='appBuildType' checked='checked')
+                input(type='radio' class="with-gap" id='debug' value='debug' name='appBuildType' checked= task.appBuildType=='debug')
                 label(for='debug') debug
         div(class='col s12 row input-field') 平台
             p
-                input(type='radio' class="with-gap" id='android' value='android' name='appPlatform' checked='checked')
-                label(for='android') Android[默认]
+                input(type='radio' class="with-gap" id='android' value='android' name='appPlatform' checked= task.appPlatform=='android')
+                label(for='android') Android
             p
-                input(type='radio' class="with-gap" id='ios' value='ios' name='appPlatform')
+                input(type='radio' class="with-gap" id='ios' value='ios' name='appPlatform' checked= task.appPlatform=='ios')
                 label(for='ios') iOS
         div(class='row input-field')
             i(class='material-icons prefix') description
             textarea(class='materialize-textarea' name='appDescription' id='appDescription' length="500"  value=task.appDescription)
             label(for='appDescription') 应用描述
+        div(class='col input-field')
+            label 证书选择
+            select(class='browser-default' name='appIosMp')
+                option(value='' disabled selected) 请选择
+                each item in mobileProvision
+                    option(value=item.UUID selected= task.appIosMp==item.UUID)= item.Name
         div(class='col s12 row input-field')
             i(class='material-icons prefix') tag_faces
             input(type='text' class='validate' name='appIcon' id='appIcon' value=task.appIcon)

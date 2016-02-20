@@ -1,0 +1,31 @@
+extends layout
+block link
+    -var selected = '新增';
+block content
+    script(src='../yigomobile/public/js/mp.js')
+    form(id='mpAddForm')
+        div(class='input-field' )
+            i(class='material-icons prefix') link
+            input(type='text' class='validate' name='UUID' id='UUID' required='required' value=)
+            label(for='UUID') UUID
+        div(class='input-field' )
+            i(class='material-icons prefix') link
+            input(type='text' class='validate' name='Name' id='Name' required='required' palceholder='' value=)
+            label(for='Name') Name
+        div(class='input-field' )
+            i(class='material-icons prefix') link
+            input(type='text' class='validate' name='appId' id='appId' required='required' value=)
+            label(for='appId') appId
+        <!-- Modal Trigger -->
+        button( type='button' value='打包' class=' btn waves-effect waves-light modal-trigger' href="#modal1") 打包
+            i(class="material-icons right") send
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+        <div class="modal-content">
+        <h4>任务提示</h4>
+        <p>任务提交成功</p>
+        </div>
+        <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
+        </div>
+        </div>

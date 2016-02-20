@@ -19,7 +19,9 @@ var taskSchema   = new Schema({
     appPlatform: String,
     apkDownloadLink: String,
     startTime: Date,
-    appBuildType: String
+    appBuildType: String,
+    appIosMp: String,
+    ipaLink: String
 });
 
 module.exports = mongoose.model('task', taskSchema);

@@ -2,6 +2,7 @@
 var mongoose   = require('mongoose');
 mongoose.createConnection('mongodb://localhost/koa-app');
 var task  = require('../models/task');
+var mp = require('../models/mobileProvision');
 var router = require('koa-router')();
 var co  = require('co');
 var _ = require('underscore');
@@ -71,6 +72,8 @@ router.post('/task', koaBody, function*(next){
     newTask.appBuildType = packConfig.appBuildType;
     newTask.status = 'waiting';
     newTask.apkDownloadLink = '../yigomobile/public/apk/' + newTask.id  + '/' + newTask.appName + '-' + newTask.appBuildType + '.apk';
+    newTask.ipaLink = '../yigomobile/public/ios/' + newTask.id  + '/' + newTask.appName + '-' + newTask.appBuildType + '.ipa';
+
     yield newTask.save(function (err) {
         if (err) {
             this.body = err;
@@ -118,5 +121,73 @@ router.get('/process',function*(next){
     yield this.body = {versions: versions};
     yield next;
 })
+
+//mobile provision
+router.post('/mp', koaBody, function*(next){
+    var newMP = new mp();
+    var packConfig =  this.request.body;
+    newMP.UUID = packConfig.UUID;
+    newMP.Name = packConfig.Name;
+    newMP.appId = packConfig.appId;
+    yield newMP.save(function (err) {
+        if (err) {
+            this.body = err;
+        }
+    });
+    yield this.body = {message: '任务提交成功'};
+    yield next;
+});
+router.get('/mp', koaBody, function*(next){
+    var newMP = new mp();
+    var packConfig =  this.request.body;
+    newMP.UUID = packConfig.UUID;
+    newMP.Name = packConfig.Name;
+    newMP.appId = packConfig.appId;
+    yield newMP.save(function (err) {
+        if (err) {
+            this.body = err;
+        }
+    });
+    yield this.body = {message: '任务提交成功'};
+    yield next;
+});
+router.get('/mps', koaBody, function *(next) {
+    var data =  this.request.query;
+    var promise = yield function(){
+        return new Promise(function(resolver,reject){
+        mp.find(
+            {},
+            '',
+            {
+                //skip: (data.pageNumber-1)*data.tasksPerPage ,
+                //limit: data.tasksPerPage,
+                //sort: {id: -1}
+            },
+            function (err, tasks) {
+                if(err) {
+                    reject(err);
+                    return;
+                }
+                if(tasks.length==0) {
+                    reject('no data');
+                    return;
+                }
+                resolver(tasks);
+            });
+    })};
+    console.log(this.request.query);
+    var corender = co.wrap(this.render);
+    yield promise
+        .then(_.bind(function(tasks) {
+            this.body = tasks;
+        },this))
+        .then(function(){
+            console.log('tasks render finished!');
+        }).catch(_.bind(function(err){
+            console.log(err);
+            this.body = err;
+        },this));
+    yield next;
+});
 
 module.exports = router;

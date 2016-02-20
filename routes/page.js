@@ -4,9 +4,31 @@ var router = require('koa-router')();
 var co  = require('co');
 var _ = require('underscore');
 var querylib = require('./querylib');
-var task  = require('../models/task');
+var mp = require('../models/mobileProvision');
 router.all('/add', function *(next) {
     "use strict";
+    //mobile provison
+    var mobileProvision = yield new Promise(function(resolver,reject){
+        mp.find(
+            {},
+            'id UUID Name appId',
+            {
+                //skip: (data.pageNumber-1)*data.tasksPerPage ,
+                //limit: data.tasksPerPage,
+                //sort: {id: -1}
+            },
+            function (err, tasks) {
+                if(err) {
+                    reject(err);
+                    return;
+                }
+                if(tasks.length==0) {
+                    reject('no data');
+                    return;
+                }
+                resolver(tasks);
+            });
+    });
     if(this.query.taskid){
         var queryStatement = {"id":this.query.taskid};
         var promise = querylib.queryOne(queryStatement);
@@ -14,7 +36,7 @@ router.all('/add', function *(next) {
         yield promise
             .then(_.bind(function(task) {
                 console.log(task);
-                return corender.call(this,'add',{title:'添加任务',task:task});
+                return corender.call(this,'add',{title:'添加任务',task:task,mobileProvision:mobileProvision});
             },this))
             .then(function(){
                 console.log('render finished');
@@ -24,7 +46,7 @@ router.all('/add', function *(next) {
                 this.body = err;
             },this));
     }else{
-        yield this.render('add',{title:'添加任务',task:{}});
+        yield this.render('add',{title:'添加任务',task:{},mobileProvision:mobileProvision});
     }
     yield next;
 });
@@ -42,6 +64,10 @@ router.get('/', function *(next) {
 });
 router.get('/news', function *(next) {
     yield this.render('news',{title:'消息'});
+    yield next;
+});
+router.get('/mp', function *(next) {
+    yield this.render('mp',{title:'消息'});
     yield next;
 });
 module.exports = router;
