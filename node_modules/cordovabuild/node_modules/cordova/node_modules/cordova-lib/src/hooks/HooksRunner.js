@@ -44,16 +44,28 @@ function HooksRunner(projectRoot) {
  * Returns a promise.
  */
 HooksRunner.prototype.fire = function fire(hook, opts) {
+    if (isHookDisabled(opts, hook)) {
+        return Q('hook '+hook+' is disabled.');
+    }
+
     // args check
     if (!hook) {
         throw new Error('hook type is not specified');
     }
     opts = this.prepareOptions(opts);
 
+    var handlers = events.listeners(hook);
+    var scripts = scriptsFinder.getHookScripts(hook, opts);
+
+    // CB-10193 Emit warning if there is any handlers subscribed to 'pre_package'
+    if (hook === 'pre_package' && (handlers.length > 0 || scripts.length > 0)) {
+        events.emit('warn', '"pre_package" hook is deprecated and will be removed in next Windows platform versions. ' +
+            'Please use "after_prepare" if you want to manipulate files in www before app will be packaged.');
+    }
+
     // execute hook event listeners first
     return executeEventHandlersSerially(hook, opts).then(function() {
         // then execute hook script files
-        var scripts = scriptsFinder.getHookScripts(hook, opts);
         var context = new Context(hook, opts);
         return runScriptsSerially(scripts, context);
     });
@@ -87,6 +99,10 @@ module.exports = HooksRunner;
  */
 module.exports.fire = globalFire;
 function globalFire(hook, opts) {
+    if (isHookDisabled(opts, hook)) {
+        return Q('hook '+hook+' is disabled.');
+    }
+
     opts = opts || {};
     return executeEventHandlersSerially(hook, opts);
 }
@@ -226,3 +242,25 @@ function extractSheBangInterpreter(fullpath) {
         hookCmd = shMatch[1];
     return hookCmd;
 }
+
+
+/**
+ * Checks if the given hook type is disabled at the command line option.
+ * @param {Object} opts - the option object that contains command line options
+ * @param {String} hook - the hook type
+ * @returns {Boolean} return true if the passed hook is disabled.
+ */
+function isHookDisabled(opts, hook) {
+    if (opts === undefined || opts.nohooks === undefined) {
+        return false;
+    }
+    var disabledHooks = opts.nohooks;
+    var length = disabledHooks.length;
+    for (var i=0; i<length; i++) {
+        if (hook.match(disabledHooks[i]) !== null) {
+            return true;
+        }
+    }
+    return false;
+}
+ 
