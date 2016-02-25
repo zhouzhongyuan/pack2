@@ -44,7 +44,7 @@ var carceo = {
     projectSvn: 'http://dev.bokesoft.com:9202/svn/mUI/trunk/www/js/lib/xiaomao/',
     appVersion: '1.1.1',
     appName: '车掌柜',
-    appPackageName: 'com.bokesoft.carceo',
+    appPackageName: 'com.bokesoft.ceo',
     appDescription: '',
     appIcon: 'www/js/lib/gzw/img/icon.png',
     appContent: 'index.html',
