@@ -1,6 +1,4 @@
 'use strict';
-var mongoose   = require('mongoose');
-mongoose.createConnection('mongodb://localhost/koa-app');
 var task  = require('../models/task');
 var mp = require('../models/mobileProvision');
 var router = require('koa-router')();
