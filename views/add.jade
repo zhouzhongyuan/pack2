@@ -23,7 +23,7 @@ block content
                 label(for='svnUser') svn 用户名
             div(class='input-field col s6')
                 i(class='material-icons prefix') remove_red_eye
-                input(type='text' class='validate' name='projectSvnPassword' id='svnPassword' value=task.projectSvnPassword)
+                input(type='password' class='validate' name='projectSvnPassword' id='svnPassword' value=task.projectSvnPassword)
                 label(for='svnPassword') svn 密码
         div(class='col s12 row')
             div(class='input-field col s6')
@@ -53,7 +53,7 @@ block content
             textarea(class='materialize-textarea' name='appDescription' id='appDescription' length="500"  value=task.appDescription)
             label(for='appDescription') 应用描述
         div(class='col input-field')
-            label 证书选择
+            div(class='chip orange lighten-2') 证书选择(ios必选)
             select(class='browser-default' name='appIosMp')
                 option(value='' disabled selected) 请选择
                 each item in mobileProvision

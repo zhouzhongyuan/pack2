@@ -1,6 +1,7 @@
 'use strict';
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/koa-app-ios'); // connec
+//TODO 1.修改对应的数据库 form koa-app-ios to koa-app
 var appConfig  = require('./models/task');
 var pack = require('cordovabuild');
 
