@@ -46,7 +46,7 @@ block content
                 input(type='radio' class="with-gap" id='android' value='android' name='appPlatform' checked= task.appPlatform=='android')
                 label(for='android') Android
             p
-                input(type='radio' class="with-gap" id='ios' value='ios' name='appPlatform' checked= task.appPlatform=='ios')
+                input(type='radio' class="with-gap" id='ios' value='ios' name='appPlatform'  checked= task.appPlatform=='ios')
                 label(for='ios') iOS
         div(class='row input-field')
             i(class='material-icons prefix') description
@@ -57,7 +57,7 @@ block content
             select(class='browser-default' name='appIosMp')
                 option(value='' disabled selected) 请选择
                 each item in mobileProvision
-                    option(value=item.UUID selected= task.appIosMp==item.UUID)= item.Name
+                    option(value=item.UUID selected= task.appIosMp== item.UUID )= item.Name
         div(class='col s12 row input-field')
             i(class='material-icons prefix') tag_faces
             input(type='text' class='validate' name='appIcon' id='appIcon' value=task.appIcon)
@@ -118,8 +118,8 @@ block content
                 label(for='phonegap-plugin-barcodescanner') phonegap-plugin-barcodescanner
 
             div(class='col s12 row variable-checkbox')
-                input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android' id='com.qdc.plugins.baidu.location')
-                label(for='com.qdc.plugins.baidu.location' class='col s6') cordova-plugin-geoloaction-baidu-android（百度增强定位)
+                input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android/' id='cordova-plugin-geoloaction-baidu-android')
+                label(for='cordova-plugin-geoloaction-baidu-android' class='col s6') cordova-plugin-geoloaction-baidu-android（百度增强定位)
                 div(class='input-field col s6' )
-                  input(type='text' class='validate input-field' name='com.qdc.plugins.baidu.location_API_KEY' value='4z5k9DG1QUIBWF9yEfb4Qho6' variable-key='API_KEY' id='com.qdc.plugins.baidu.location_API_KEY')
-                  label(for='com.qdc.plugins.baidu.location_API_KEY') API_KEY
+                  input(type='text' class='validate input-field' name='cordova-plugin-geoloaction-baidu-android_API_KEY' value='4z5k9DG1QUIBWF9yEfb4Qho6' variable-key='API_KEY' id='cordova-plugin-geoloaction-baidu-android_API_KEY')
+                  label(for='cordova-plugin-geoloaction-baidu-android_API_KEY') API_KEY
