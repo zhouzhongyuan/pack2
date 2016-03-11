@@ -5,7 +5,7 @@ querylib.queryAll = function(data) {
     return new Promise(function(resolver,reject){
         task.find(
             {},
-            'id appName startTime status apkDownloadLink ipaLink appPlatform appBuildType',
+            'id appName startTime status apkDownloadLink ipaLink appPlatform appBuildType appVersion',
             {
                 skip: (data.pageNumber-1)*data.tasksPerPage ,
                 limit: data.tasksPerPage,

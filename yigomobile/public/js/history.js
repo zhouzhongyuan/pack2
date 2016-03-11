@@ -85,6 +85,7 @@ function getTasks(pageNumber){
             <td>{{=value.appName}}</td>\
             <td> <div class=\"chip red accent-2\">{{=value.appPlatform}}</div></td>\
             <td> <div class=\"chip  teal darken-2\">{{=value.appBuildType}}</div></td>\
+            <td> <div class=\"chip  amber lighten-2\">{{=value.appVersion}}</div></td>\
             <td>{{=value.startTime}}</td>\
             <td>{{=value.status}}</td>\
             <td><a href={{=value.downloadLink}}>安装包下载</a></td>\
