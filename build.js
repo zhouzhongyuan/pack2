@@ -1,14 +1,13 @@
 'use strict';
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/koa-app'); // connec
-//TODO 1.修改对应的数据库 form koa-app-ios to koa-app
 var appConfig  = require('./models/task');
 var pack = require('cordovabuild');
 
 var busy = false;
 
 var findTask = function(){
-    return new Promise(function(resolver,reject){
+    return new Promise(function(resolve,reject){
         appConfig.find({ status: 'waiting' }, function(err, bears) {
             if(err){
                 reject(err);
@@ -16,7 +15,7 @@ var findTask = function(){
             if(bears.length==0){
                 reject('no task');
             }
-            resolver(bears[0]);
+            resolve(bears[0]);
         })
     })
 }
@@ -28,21 +27,40 @@ function monitor(){
     var tt = null;
     findTask().then(function(task){
         busy=true;
-        tt = task;
         task.status = "accepted";
         task.save();
-        var packIns = pack(task);
+
+        var winston = require('winston');
+        var filename = 'yigomobile/public/log/';
+        filename += task.id + '.log';
+        var fs = require('fs');
+        var stream = fs.createWriteStream(filename);
+        var file = new (winston.transports.File)({ stream: stream,    handleExceptions: true,
+            humanReadableUnhandledException: true });
+        var winston = new (winston.Logger)({ transports: [file] });
+
+        winston.info('begin to pack ',task.id);
+        tt = task;
+
+        var packIns = pack(task,winston);
         return packIns.build();
-    }).then(function(packIns){
-        console.log('done');
+    }).then(function(packIns,winston){
         tt.status = "finished";
         tt.save();
+        console.log('pack success');
         busy=false;
-    }).catch(function(e){
+    }).catch(function(e,winston){
         tt.status = "rejected";
         tt.save();
-        console.error('错误如下：');
-        console.error(e);
+        console.log('Error begin,current directory:',process.cwd());
+        var path = require('path');
+        var appDir = path.dirname(require.main.filename);
+        process.chdir(appDir);
+        console.log('Error after change,current directory:',process.cwd());
+        //清空working
+
+        console.log('错误如下：');
+        console.log(e);
         busy=false;
     });
 }

@@ -87,7 +87,7 @@ function getTasks(pageNumber){
             <td> <div class=\"chip  teal darken-2\">{{=value.appBuildType}}</div></td>\
             <td> <div class=\"chip  amber lighten-2\">{{=value.appVersion}}</div></td>\
             <td>{{=value.startTime}}</td>\
-            <td>{{=value.status}}</td>\
+            <td><a href=/yigomobile/public/log/{{=value.id}}.log>{{=value.status}}</a></td>\
             <td><a href={{=value.downloadLink}}>安装包下载</a></td>\
             <td><a href=/yigomobile/add?taskid={{=value.id}}>再次打包</a></td>\
             <td><a class ='delete-task' href='#' apihref=/yigomobile/api/task/{{=value.id}}>删除任务</a></td>\
