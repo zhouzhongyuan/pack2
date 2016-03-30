@@ -37,30 +37,28 @@ function monitor(){
         var stream = fs.createWriteStream(filename);
         var file = new (winston.transports.File)({ stream: stream,    handleExceptions: true,
             humanReadableUnhandledException: true });
-        var winston = new (winston.Logger)({ transports: [file] });
+        task.winston = new (winston.Logger)({ transports: [file] });
 
-        winston.info('begin to pack ',task.id);
+        task.winston.info('begin to pack ',task.id);
         tt = task;
 
-        var packIns = pack(task,winston);
+        var packIns = pack(task);
         return packIns.build();
-    }).then(function(packIns,winston){
+    }).then(function(packIns){
         tt.status = "finished";
         tt.save();
-        console.log('pack success');
+        tt.winston.info('pack success');
         busy=false;
     }).catch(function(e,winston){
         tt.status = "rejected";
         tt.save();
-        console.log('Error begin,current directory:',process.cwd());
         var path = require('path');
         var appDir = path.dirname(require.main.filename);
         process.chdir(appDir);
-        console.log('Error after change,current directory:',process.cwd());
         //清空working
 
-        console.log('错误如下：');
-        console.log(e);
+        tt.winston.info('错误如下：');
+        tt.winston.info(e);
         busy=false;
     });
 }
