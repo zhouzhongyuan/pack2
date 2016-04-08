@@ -102,9 +102,6 @@ block content
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-transfer' id='cordova-plugin-file-transfer' checked='checked')
                 label(for='cordova-plugin-file-transfer') cordova-plugin-file-transfer
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-geolocation' id='cordova-plugin-geolocation' checked='checked')
-                label(for='cordova-plugin-geolocation') cordova-plugin-geolocation
-            p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-inappbrowser' id='cordova-plugin-inappbrowser' checked='checked')
                 label(for='cordova-plugin-inappbrowser') cordova-plugin-inappbrowser
             p
@@ -116,7 +113,12 @@ block content
             p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='phonegap-plugin-barcodescanner' id='phonegap-plugin-barcodescanner' checked='checked')
                 label(for='phonegap-plugin-barcodescanner') phonegap-plugin-barcodescanner
-
+            p
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-geolocation' id='cordova-plugin-geolocation' )
+                label(for='cordova-plugin-geolocation') cordova-plugin-geolocation（普通定位,不可以与cordova-plugin-geolocation-baidu同时使用)
+            p
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-geolocation-baidu' id='cordova-plugin-geolocation-baidu' )
+                label(for='cordova-plugin-geolocation-baidu') cordova-plugin-geolocation-baidu（iOS 百度增强定位,仅限车掌柜使用,不可以与cordova-plugin-geolocation同时使用)
             div(class='col s12 row variable-checkbox')
                 input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android/' id='cordova-plugin-geoloaction-baidu-android')
                 label(for='cordova-plugin-geoloaction-baidu-android' class='col s6') cordova-plugin-geoloaction-baidu-android（Android 百度增强定位,仅限车掌柜使用)
@@ -127,5 +129,5 @@ block content
                 input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-wechat/' id='cordova-plugin-wechat')
                 label(for='cordova-plugin-wechat' class='col s6') cordova-plugin-wechat（iOS 微信分享,仅限车掌柜使用)
                 div(class='input-field col s6' )
-                  input(type='text' class='validate input-field' name='cordova-plugin-wechat_API_KEY' value='wxd370fd102cb18581' variable-key='WECHATAPPID' id='cordova-plugin-wechat_API_KEY')
+                  input(type='text' class='validate input-field' name='cordova-plugin-wechat_API_KEY' value='wx0b12e3e1adde0d7f' variable-key='WECHATAPPID' id='cordova-plugin-wechat_API_KEY')
                   label(for='cordova-plugin-wechat_API_KEY') wechatappid
