@@ -9,6 +9,9 @@ var names =
         'text': '历史纪录',
         'url': '/yigomobile/history'
     },{
+        'text': '参数',
+        'url': '/yigomobile/arguments'
+    },{
         'text': '消息',
         'url': '/yigomobile/news'
     }

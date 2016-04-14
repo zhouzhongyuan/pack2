@@ -70,4 +70,8 @@ router.get('/mp', function *(next) {
     yield this.render('mp',{title:'消息'});
     yield next;
 });
+router.get('/arguments', function *(next) {
+    yield this.render('arguments',{title:'参数'});
+    yield next;
+});
 module.exports = router;
