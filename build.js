@@ -58,7 +58,9 @@ function monitor(){
         //清空working
 
         tt.winston.info('错误如下：');
-        tt.winston.info(e);
+        var err = e.toString();
+        console.log(err)
+        tt.winston.info(err);
         busy=false;
     });
 }
