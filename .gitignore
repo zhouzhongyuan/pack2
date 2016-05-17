@@ -1,43 +1,55 @@
-.idea/*
-/cordova/*
-/node_modules/.bin/*
-/node_modules/body-parser/*
-/node_modules/co/*
-/node_modules/cordovabuild/.idea/*
-/node_modules/cordovabuild/node_modules/.bin/*
-/node_modules/cordovabuild/node_modules/cheerio/*
-/node_modules/cordovabuild/node_modules/co/*
-/node_modules/cordovabuild/node_modules/fs-extra/*
-/node_modules/cordovabuild/node_modules/fs.extra/*
-/node_modules/cordovabuild/node_modules/plist/*
-/node_modules/cordovabuild/node_modules/svn-spawn/*
-/node_modules/cordovabuild/node_modules/underscore/*
-/node_modules/hammer/*
-/node_modules/jade/*
-/node_modules/koa-body/*
-/node_modules/koa-qs/*
-/node_modules/koa-router/*
-/node_modules/koa-static/*
-/node_modules/koa-views/*
-/node_modules/koa/*
-/node_modules/mongoose/*
-/node_modules/underscore/*
-/views/.idea/*
-/yigomobile/public/apk/*
-/yigomobile/public/bower_components/*
-/yigomobile/public/node_modules/*
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/cordova-js/node_modules/browserify/node_modules/url/node_modules/querystring/.History.md.un~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/cordova-js/node_modules/browserify/node_modules/url/node_modules/querystring/.Readme.md.un~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/cordova-js/node_modules/browserify/node_modules/url/node_modules/querystring/.package.json.un~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/cordova-js/node_modules/browserify/node_modules/url/node_modules/querystring/test/.index.js.un~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/init-package-json/node_modules/npm-package-arg/README.md~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/init-package-json/node_modules/read-package-json/node_modules/json-parse-helpfulerror/.editorconfig~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/init-package-json/node_modules/read-package-json/node_modules/json-parse-helpfulerror/index.js~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/init-package-json/node_modules/read-package-json/node_modules/json-parse-helpfulerror/test/test.js~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/init-package-json/node_modules/read-package-json/node_modules/normalize-package-data/test/normalize.js~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/npm/node_modules/node-gyp/node_modules/npmlog/node_modules/gauge/README.md~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/npm/node_modules/node-gyp/node_modules/npmlog/node_modules/gauge/node_modules/has-unicode/README.md~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/npm/node_modules/npm-install-checks/node_modules/npmlog/node_modules/gauge/README.md~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/cordova-lib/node_modules/npm/node_modules/npm-install-checks/node_modules/npmlog/node_modules/gauge/node_modules/has-unicode/README.md~
-/node_modules/cordovabuild/node_modules/cordova/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/nested-error-stacks/README.md~
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
+
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Created by .ignore support plugin (hsz.mobi)
+
+.idea/*
+yigomobile/public/apk/*
+yigomobile/public/ios/*
+yigomobile/public/log/*
+yigomobile/public/bower_components/*
+node_modules/
+plugin/node_modules/
