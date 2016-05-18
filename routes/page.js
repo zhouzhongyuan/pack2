@@ -8,7 +8,7 @@ var mp = require('../models/mobileProvision');
 router.all('/add', function *(next) {
     "use strict";
     //mobile provison
-    var mobileProvision = yield new Promise(function(resolver,reject){
+    var mobileProvision = yield new Promise(function(resolve,reject){
         mp.find(
             {},
             'id UUID Name appId',
@@ -23,10 +23,10 @@ router.all('/add', function *(next) {
                     return;
                 }
                 if(tasks.length==0) {
-                    reject('no data');
+                    resolve('find no data');
                     return;
                 }
-                resolver(tasks);
+                resolve(tasks);
             });
     });
     if(this.query.taskid){
@@ -63,9 +63,7 @@ router.get('/', function *(next) {
     yield next;
 });
 router.get('/news', function *(next) {
-    //yield this.render('news');
-    this.body = 'Hello World';
-    //yield this.render('news',{title:'消息'});
+    yield this.render('news',{title:'消息'});
     yield next;
 });
 router.get('/mp', function *(next) {

@@ -17,7 +17,7 @@ querylib.queryAll = function(data) {
                 return;
             }
             if(tasks.length==0) {
-                reject('no data');
+                reject('query no data');
                 return;
             }
             resolver(tasks);

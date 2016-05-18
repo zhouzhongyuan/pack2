@@ -5,6 +5,13 @@ $(document).ready(function(){
         submitTask();
     })
     $('.modal-trigger').leanModal();
+
+    $('.all-selector').on('click',function(){
+        $( ".appPlugin :checkbox" ).attr('checked','checked');
+    });
+    $('.all-not-selector').on('click',function(){
+        $( ".appPlugin :checkbox " ).removeAttr('checked');
+    });
     }
 );
 function submitTask(){

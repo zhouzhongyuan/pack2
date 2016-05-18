@@ -8,10 +8,10 @@ block content
             i(class='material-icons prefix') link
             input(type='url' class='validate' name='baseSvn' id='baseSvn' required='required' value=task.baseSvn)
             label(for='baseSvn') 主Svn
-        div(class='input-field' )
-            i(class='material-icons prefix') link
-            input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
-            label(for='projectSvn') 项目的Svn
+        //div(class='input-field' )
+        //    i(class='material-icons prefix') link
+        //    input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
+        //    label(for='projectSvn') 项目的Svn
         div(class='input-field' )
             i(class='material-icons prefix') link
             input(type='text' class='validate' name='appVersion' id='appVersion' required='required' value=task.appVersion)
@@ -83,6 +83,9 @@ block content
                 input(type='radio' class="with-gap" id='splash' value='js/lib/project-sida/splash.html' name='appContent')
                 label(for='splash') 引导页
         li(class='appPlugin') 插件选择
+            div(class='selector')
+                input(type='button' value='全选' class='waves-effect waves-light btn all-selector')
+                input(type='button' value='全不选' class='waves-effect waves-light btn all-not-selector')
             p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-app-version' id='cordova-plugin-app-version' checked='checked')
                 label(for='cordova-plugin-app-version') cordova-plugin-app-version

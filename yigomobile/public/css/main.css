@@ -99,3 +99,6 @@ label.s8{
 .variable-checkbox{
     height: 76px;
 }
+.selector >i{
+    margin: 20px;
+}

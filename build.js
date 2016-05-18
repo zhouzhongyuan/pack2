@@ -1,6 +1,6 @@
 'use strict';
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/koa-app'); // connec
+mongoose.connect('mongodb://localhost/koa-app-pack2'); // connec
 var appConfig  = require('./models/task');
 var pack = require('cordova-pack');
 
