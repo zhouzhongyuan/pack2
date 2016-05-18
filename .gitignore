@@ -53,3 +53,4 @@ yigomobile/public/log/*
 yigomobile/public/bower_components/*
 node_modules/
 plugin/node_modules/
+working/

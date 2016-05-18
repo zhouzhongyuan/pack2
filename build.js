@@ -2,7 +2,7 @@
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/koa-app'); // connec
 var appConfig  = require('./models/task');
-var pack = require('cordovabuild');
+var pack = require('cordova-pack');
 
 var busy = false;
 

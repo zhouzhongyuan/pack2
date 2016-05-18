@@ -63,7 +63,9 @@ router.get('/', function *(next) {
     yield next;
 });
 router.get('/news', function *(next) {
-    yield this.render('news',{title:'消息'});
+    //yield this.render('news');
+    this.body = 'Hello World';
+    //yield this.render('news',{title:'消息'});
     yield next;
 });
 router.get('/mp', function *(next) {
