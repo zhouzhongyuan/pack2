@@ -35,7 +35,7 @@ router.all('/add', function *(next) {
         var corender = co.wrap(this.render);
         yield promise
             .then(_.bind(function(task) {
-                console.log(task);
+                //console.log(task);
                 return corender.call(this,'add',{title:'添加任务',task:task,mobileProvision:mobileProvision});
             },this))
             .then(function(){

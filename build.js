@@ -54,7 +54,7 @@ function monitor(){
         tt.save();
         var path = require('path');
         var appDir = path.dirname(require.main.filename);
-        process.chdir(appDir);
+        //process.chdir(appDir);
         //清空working
 
         tt.winston.info('错误如下：');

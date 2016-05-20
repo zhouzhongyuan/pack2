@@ -175,14 +175,14 @@ router.get('/mps', koaBody, function *(next) {
                 resolver(tasks);
             });
     })};
-    console.log(this.request.query);
+    //console.log(this.request.query);
     var corender = co.wrap(this.render);
     yield promise
         .then(_.bind(function(tasks) {
             this.body = tasks;
         },this))
         .then(function(){
-            console.log('tasks render finished!');
+            //console.log('tasks render finished!');
         }).catch(_.bind(function(err){
             console.log(err);
             this.body = err;
