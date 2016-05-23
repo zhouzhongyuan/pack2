@@ -72,6 +72,7 @@ router.post('/task', koaBody, function*(next){
     newTask.apkDownloadLink = '../../yigomobile/public/apk/' + newTask.id  + '/' + newTask.appName + '-' + newTask.appBuildType + '.apk';
     newTask.ipaLink = '../../yigomobile/public/ios/' + newTask.id  + '/' + newTask.appName + '-' + newTask.appBuildType + '.ipa';
     newTask.appIosMp = packConfig.appIosMp;
+    newTask.yigoVersion = packConfig.yigoVersion;
 
 
     yield newTask.save(function (err) {

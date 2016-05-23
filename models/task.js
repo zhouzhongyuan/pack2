@@ -21,7 +21,8 @@ var taskSchema   = new Schema({
     startTime: Date,
     appBuildType: String,
     appIosMp: String,
-    ipaLink: String
+    ipaLink: String,
+    yigoVersion: Number
 });
 
 module.exports = mongoose.model('task', taskSchema);

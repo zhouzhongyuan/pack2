@@ -12,6 +12,7 @@ $(document).ready(function(){
     $('.all-not-selector').on('click',function(){
         $( ".appPlugin :checkbox " ).removeAttr('checked');
     });
+    alert("网站正在升级中……\n请勿打包\n若情况紧急,请联系QQ 759754385(周中原)")
     }
 );
 function submitTask(){

@@ -8,10 +8,16 @@ block content
             i(class='material-icons prefix') link
             input(type='url' class='validate' name='baseSvn' id='baseSvn' required='required' value=task.baseSvn)
             label(for='baseSvn') 主Svn
-        //div(class='input-field' )
-        //    i(class='material-icons prefix') link
-        //    input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
-        //    label(for='projectSvn') 项目的Svn
+        div(class='input-field' )
+            i(class='material-icons prefix') link
+            input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
+            label(for='projectSvn') 项目的Svn
+        div(class='col input-field')
+            div(class='chip orange lighten-2') Yigo版本
+            select(class='browser-default' name='yigoVersion')
+                option(value='' disabled selected) 请选择
+                option(value=1.6 )= 1.6
+                option(value=2 )= 2
         div(class='input-field' )
             i(class='material-icons prefix') link
             input(type='text' class='validate' name='appVersion' id='appVersion' required='required' value=task.appVersion)

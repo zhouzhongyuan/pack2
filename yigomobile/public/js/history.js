@@ -2,6 +2,7 @@ $(document).ready(function(){
     getTasks();
     pagination(1);
     setInterval(getTasks,100*1000);
+    alert("网站正在升级中……\n请勿打包\n若情况紧急,请联系QQ 759754385(周中原)")
     }
 );
 
@@ -77,7 +78,11 @@ function getTasks(pageNumber){
         if(v.appPlatform === 'android'){
             v.downloadLink = v.apkDownloadLink;
         }else if(v.appPlatform === 'ios'){
-            v.downloadLink = v.ipaLink;
+            var link = v.ipaLink;
+            var reg = new RegExp('^(.+)\/(?:[^/]+)$');
+            link = reg.exec(link)[1] + '/index.html';
+            v.downloadLink = link;
+            //v.downloadLink = v.ipaLink;
         }
     });
     var template = "{{~it :value:index}}\
@@ -88,7 +93,7 @@ function getTasks(pageNumber){
             <td> <div class=\"chip  amber lighten-2\">{{=value.appVersion}}</div></td>\
             <td>{{=value.startTime}}</td>\
             <td><a href=/yigomobile/public/log/{{=value.id}}.log>{{=value.status}}</a></td>\
-            <td><a href={{=value.downloadLink}}>安装包下载</a></td>\
+            <td><a href={{=value.downloadLink}}>在线安装</a></td>\
             <td><a href=/yigomobile/add?taskid={{=value.id}}>再次打包</a></td>\
             <td><a class ='delete-task' href='#' apihref=/yigomobile/api/task/{{=value.id}}>删除任务</a></td>\
         </tr>>\
