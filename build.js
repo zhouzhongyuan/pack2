@@ -1,14 +1,16 @@
 'use strict';
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/koa-app'); // connec
-var appConfig  = require('./models/task');
+var taskModel  = require('./models/task');
+var releaseModel = require('./models/release');
+
 var pack = require('cordova-pack');
 
 var busy = false;
 
 var findTask = function(){
     return new Promise(function(resolve,reject){
-        appConfig.find({ status: 'waiting' }, function(err, bears) {
+        taskModel.find({ status: 'waiting' }, function(err, bears) {
             if(err){
                 reject(err);
             }
@@ -48,6 +50,61 @@ function monitor(){
         tt.status = "finished";
         tt.save();
         tt.winston.info('pack success');
+        /*
+        * pack success. After that, release
+        * */
+        if(tt.release){
+            const appPackageName = tt.appPackageName;
+            const appPlatform = tt.appPlatform;
+            const appVersion = tt.appVersion;
+            const serverPath = 'https://dev.bokesoft.com/yigomobile/public/';
+            let androidLink = `${serverPath}apk/${tt.id}/${tt.appName}-${tt.appBuildType}.apk`;
+            console.log(androidLink);
+            let iosLink = `${serverPath}ios/${tt.id}/index.html`
+            switch (appPlatform){
+                case 'android':
+                    var query = {
+                        "appPackageName":appPackageName,
+                        "androidVersion":appVersion,
+                        "androidLink":androidLink,
+                    };
+                    break;
+                case 'ios':
+                    var query = {
+                        "appPackageName":appPackageName,
+                        "iosVersion":appVersion,
+                        "iosLink":iosLink,
+                    };
+                    break;
+            }
+            releaseModel.find({appPackageName:appPackageName},function(err,data){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+
+                var newQuery = new releaseModel(query);
+                if(data.length){
+                    //updage
+                    releaseModel.update({"appPackageName":appPackageName},query,function(err,data){
+                        if(err){
+                            console.log(err);
+                        }else {
+                            console.log(`update ${appPlatform} success`);
+                        }
+                    });
+                }else{
+                    //create
+                    var newQuery = new releaseModel(query);
+                    newQuery.save(function (err, fluffy) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log(fluffy);
+                    });
+                }
+            });
+        }
         busy=false;
     }).catch(function(e,winston){
         tt.status = "rejected";

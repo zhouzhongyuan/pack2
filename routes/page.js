@@ -92,10 +92,9 @@ router.get('/check-update', function *(next) {
                 })
         });
     };
-    if(this.query.appPackageName && this.query.appPlatform) {
+    if(this.query.appPackageName) {
         var queryStatement = {
             "appPackageName":this.query.appPackageName,
-            "appPlatform":this.query.appPlatform,
         };
         var promise = queryOne(queryStatement);
         yield promise

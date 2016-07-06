@@ -3,11 +3,15 @@ var Schema       = mongoose.Schema;
 
 var releaseSchema   = new Schema({
     id: String,
-    appPackageName: String,
-    appPlatform: String,
-    apkDownloadLink: String,
-    ipaLink: String,
-    appVersion: String,
+    appPackageName: {
+        type:String,
+        required: true,
+        unique: true
+    },
+    iosVersion: String,
+    androidVersion: String,
+    iosLink: String,
+    androidLink: String,
 });
 
 module.exports = mongoose.model('release', releaseSchema);
