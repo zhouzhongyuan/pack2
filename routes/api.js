@@ -73,6 +73,7 @@ router.post('/task', koaBody, function*(next){
     newTask.ipaLink = '../../yigomobile/public/ios/' + newTask.id  + '/' + newTask.appName + '-' + newTask.appBuildType + '.ipa';
     newTask.appIosMp = packConfig.appIosMp;
     newTask.yigoVersion = packConfig.yigoVersion;
+    newTask.appRelease = packConfig.appRelease;
 
 
     yield newTask.save(function (err) {

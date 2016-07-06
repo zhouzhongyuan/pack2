@@ -22,7 +22,9 @@ var taskSchema   = new Schema({
     appBuildType: String,
     appIosMp: String,
     ipaLink: String,
-    yigoVersion: Number
+    yigoVersion: Number,
+    appRelease: Boolean,
+
 });
 
 module.exports = mongoose.model('task', taskSchema);

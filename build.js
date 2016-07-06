@@ -53,7 +53,7 @@ function monitor(){
         /*
         * pack success. After that, release
         * */
-        if(tt.release){
+        if(tt.appRelease){
             const appPackageName = tt.appPackageName;
             const appPlatform = tt.appPlatform;
             const appVersion = tt.appVersion;

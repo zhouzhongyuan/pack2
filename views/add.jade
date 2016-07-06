@@ -89,6 +89,13 @@ block content
             p
                 input(type='radio' class="with-gap" id='splash' value='js/lib/project-sida/splash.html' name='appContent')
                 label(for='splash') 引导页
+        div(class='col s12 row input-field') 是否发布
+            p
+                input(type='radio' class="with-gap" id='appReleaseNo' value='false' name='appRelease' checked='checked')
+                label(for='appReleaseNo') 不发布[默认]
+            p
+                input(type='radio' class="with-gap" id='appReleaseYes' value='true' name='appRelease')
+                label(for='appReleaseYes') 发布
         li(class='appPlugin') 插件选择
             div(class='selector')
                 input(type='button' value='全选' class='waves-effect waves-light btn all-selector')
