@@ -5,6 +5,7 @@ var co  = require('co');
 var _ = require('underscore');
 var querylib = require('./querylib');
 var mp = require('../models/mobileProvision');
+var releaseModel = require('../models/release');
 router.all('/add', function *(next) {
     "use strict";
     //mobile provison
@@ -73,4 +74,45 @@ router.get('/arguments', function *(next) {
     yield this.render('arguments',{title:'参数'});
     yield next;
 });
+router.get('/check-update', function *(next) {
+    function queryOne(queryStatement) {
+        return new Promise(function(resolve,reject){
+            releaseModel.find(
+                queryStatement,
+                function(err, task){
+                    if(err){
+                        reject(err);
+                        return;
+                    }
+                    if(!task || task.length === 0){
+                        reject('no this task');
+                        return;
+                    }
+                    resolve(task);
+                })
+        });
+    };
+    if(this.query.appPackageName && this.query.appPlatform) {
+        var queryStatement = {
+            "appPackageName":this.query.appPackageName,
+            "appPlatform":this.query.appPlatform,
+        };
+        var promise = queryOne(queryStatement);
+        yield promise
+            .then(_.bind(function(data) {
+                this.body = {message:data};
+                next;
+            },this))
+            .catch(_.bind(function(err){
+                this.body = {message:err};
+                next;
+            },this));
+    } else {
+        this.body = {message: 'your search info is wrong!'};
+        yield next;
+
+    }
+});
 module.exports = router;
+
+

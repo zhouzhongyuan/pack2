@@ -7,6 +7,7 @@ var releaseSchema   = new Schema({
     appPlatform: String,
     apkDownloadLink: String,
     ipaLink: String,
+    appVersion: String,
 });
 
 module.exports = mongoose.model('release', releaseSchema);
