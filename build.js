@@ -1,6 +1,6 @@
 'use strict';
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/koa-app-pack2'); // connec
+mongoose.connect('mongodb://localhost/koa-app'); // connec
 var appConfig  = require('./models/task');
 var pack = require('cordova-pack');
 
@@ -54,7 +54,7 @@ function monitor(){
         tt.save();
         var path = require('path');
         var appDir = path.dirname(require.main.filename);
-        //process.chdir(appDir);
+        process.chdir(appDir);
         //清空working
 
         tt.winston.info('错误如下：');
