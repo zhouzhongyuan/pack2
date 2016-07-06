@@ -60,13 +60,14 @@ function monitor(){
             const serverPath = 'https://dev.bokesoft.com/yigomobile/public/';
             let androidLink = `${serverPath}apk/${tt.id}/${tt.appName}-${tt.appBuildType}.apk`;
             console.log(androidLink);
-            let iosLink = `${serverPath}ios/${tt.id}/index.html`
+            let iosLink = `${serverPath}ios/${tt.id}/index.html`;
             switch (appPlatform){
                 case 'android':
                     var query = {
                         "appPackageName":appPackageName,
                         "androidVersion":appVersion,
                         "androidLink":androidLink,
+                        'updateTime':new Date(),
                     };
                     break;
                 case 'ios':
@@ -74,6 +75,7 @@ function monitor(){
                         "appPackageName":appPackageName,
                         "iosVersion":appVersion,
                         "iosLink":iosLink,
+                        'updateTime':new Date(),
                     };
                     break;
             }

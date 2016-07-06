@@ -12,6 +12,7 @@ var releaseSchema   = new Schema({
     androidVersion: String,
     iosLink: String,
     androidLink: String,
+    updateTime: Date,
 });
 
 module.exports = mongoose.model('release', releaseSchema);
