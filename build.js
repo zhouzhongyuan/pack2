@@ -43,10 +43,11 @@ function monitor(){
 
         task.winston.info('begin to pack ',task.id);
         tt = task;
-
+        // return tt;
         var packIns = pack(task);
         return packIns.build();
-    }).then(function(packIns){
+    })
+        .then(function(packIns){
         tt.status = "finished";
         tt.save();
         tt.winston.info('pack success');
@@ -57,58 +58,101 @@ function monitor(){
             const appPackageName = tt.appPackageName;
             const appPlatform = tt.appPlatform;
             const appVersion = tt.appVersion;
+            const appName = tt.appName;
             const serverPath = 'https://dev.bokesoft.com/yigomobile/public/';
             let androidLink = `${serverPath}apk/${tt.id}/${tt.appName}-${tt.appBuildType}.apk`;
-            console.log(androidLink);
             let iosLink = `${serverPath}ios/${tt.id}/index.html`;
             switch (appPlatform){
                 case 'android':
                     var query = {
+                        "appName":appName,
                         "appPackageName":appPackageName,
                         "androidVersion":appVersion,
                         "androidLink":androidLink,
-                        'updateTime':new Date(),
+                        'androidUpdateTime':new Date(),
                     };
                     break;
                 case 'ios':
                     var query = {
+                        "appName":appName,
                         "appPackageName":appPackageName,
                         "iosVersion":appVersion,
                         "iosLink":iosLink,
-                        'updateTime':new Date(),
+                        'iosUpdateTime':new Date(),
                     };
                     break;
             }
-            releaseModel.find({appPackageName:appPackageName},function(err,data){
-                if(err){
-                    console.log(err);
-                    return;
-                }
+            var saveData = new Promise(function(resolve,reject){
+                releaseModel.find({appPackageName:appPackageName},function(err,data){
+                    if(err){
+                        reject(err);
+                    }
+                    if(data.length){
+                        //updage
+                        releaseModel.findOneAndUpdate({"appPackageName":appPackageName},query,{new: true},function(err,data){
+                            if(err){
+                                reject(err);
+                            }
+                            resolve(data);
 
-                var newQuery = new releaseModel(query);
-                if(data.length){
-                    //updage
-                    releaseModel.update({"appPackageName":appPackageName},query,function(err,data){
-                        if(err){
-                            console.log(err);
-                        }else {
-                            console.log(`update ${appPlatform} success`);
-                        }
-                    });
-                }else{
-                    //create
-                    var newQuery = new releaseModel(query);
-                    newQuery.save(function (err, fluffy) {
-                        if (err) {
-                            console.log(err);
-                        }
-                        console.log(fluffy);
-                    });
-                }
+                        });
+                    }else{
+                        //create
+                        var newQuery = new releaseModel(query);
+                        newQuery.save(function (err, data) {
+                            if (err) {
+                                reject(err);
+                            }
+                            resolve(data);
+                        });
+                    }
+                });
             });
+            saveData
+                .then(function (data) {
+                    data = JSON.stringify(data);
+                    data = JSON.parse(data);
+                    //generater-html
+                    var fs = require('fs-extra')
+                    var _ = require('underscore');
+                    fs.readFile('release/index.html', 'utf8', function(err, html){
+                        function getLocalTime(date){
+                            var a = new Date(date);
+                            const year = a.getFullYear();
+                            const month = a.getMonth() + 1;
+                            const day = a.getDate();
+                            return [year,month,day].join('-')
+                        }
+                        var compiled = _.template(html);
+                        if(data.androidUpdateTime){
+                            const temp = getLocalTime(data.androidUpdateTime);
+                            data.androidUpdateTime = temp.toString();
+
+                        }
+                        if(data.iosUpdateTime){
+                            const temp = getLocalTime(data.iosUpdateTime);
+
+                            data.iosUpdateTime = temp.toString();
+                        }
+                        var result = compiled(data);
+                        //写入
+                        fs.outputFile(`yigomobile/public/release/${data.appPackageName}/index.html`, result, function(err) {
+                            if(err) {
+                                console.log(err);
+                                return err;
+                            }
+                            console.log("The file was saved!");
+                        });
+                    })
+
+
+
+                })
+
         }
         busy=false;
-    }).catch(function(e,winston){
+    })
+        .catch(function(e,winston){
         tt.status = "rejected";
         tt.save();
         var path = require('path');
