@@ -91,10 +91,10 @@ block content
                 label(for='splash') 引导页
         div(class='col s12 row input-field') 是否发布
             p
-                input(type='radio' class="with-gap" id='appReleaseNo' value='false' name='appRelease' checked='checked')
+                input(type='radio' class="with-gap" id='appReleaseNo' value='false' name='appRelease' checked= task.appRelease===false )
                 label(for='appReleaseNo') 不发布[默认]
             p
-                input(type='radio' class="with-gap" id='appReleaseYes' value='true' name='appRelease')
+                input(type='radio' class="with-gap" id='appReleaseYes' value='true' name='appRelease' checked= task.appRelease===true )
                 label(for='appReleaseYes') 发布
         li(class='appPlugin') 插件选择
             div(class='selector')
@@ -159,3 +159,6 @@ block content
                 div(class='input-field col s4' )
                     input(type='text' class='validate input-field' name='cordova-plugin-geoloaction-baidu-android_API_KEY' value='4z5k9DG1QUIBWF9yEfb4Qho6' variable-key='API_KEY' id='cordova-plugin-geoloaction-baidu-android_API_KEY')
                     label(for='cordova-plugin-geoloaction-baidu-android_API_KEY') API_KEY
+            p
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-crosswalk-webview' id='cordova-plugin-crosswalk-webview')
+                label(for='cordova-plugin-crosswalk-webview') cordova-plugin-crosswalk-webview(针对低版本android)
