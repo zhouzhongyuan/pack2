@@ -134,21 +134,25 @@ function monitor(){
 
                             data.iosUpdateTime = temp.toString();
                         }
-                        var result = compiled(data);
-                        //写入
-                        fs.outputFile(`yigomobile/public/release/${data.appPackageName}/index.html`, result, function(err) {
-                            if(err) {
+                        var QRCode = require('qrcode');
+                        const pageUrl = `${serverPath}release/${data.appPackageName}/index.html`;
+                        QRCode.toDataURL(pageUrl,function(err,url){
+                            if(err){
                                 console.log(err);
                                 return err;
                             }
-                            console.log("The file was saved!");
+                            data.url = url;
+                            const result = compiled(data);
+                            fs.outputFile(`yigomobile/public/release/${data.appPackageName}/index.html`, result, (err) => {
+                                if(err) {
+                                    console.log(err);
+                                    return err;
+                                }
+                                console.log("The file was saved!");
+                            });
                         });
                     })
-
-
-
                 })
-
         }
         busy=false;
     })
