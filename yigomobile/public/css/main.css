@@ -102,3 +102,12 @@ label.s8{
 .selector >i{
     margin: 20px;
 }
+@media (max-width: 600px) {
+    .brand-logo{
+        display: none!important;
+    }
+}
+.brand-logo{
+    left: 0!important;
+}
+

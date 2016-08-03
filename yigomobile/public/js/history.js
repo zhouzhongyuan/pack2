@@ -76,6 +76,14 @@ function getTasks(pageNumber){
     var data = htmlObj.responseJSON;
     _.each(data, function(v){
         v.startTime = (new Date(v.startTime)).toLocaleString();
+        switch (v.status){
+            case 'accepted':
+                v.status = '打包中';
+                break;
+            case 'finished':
+                v.status = '打包成功';
+                break;
+        }
         if(v.appPlatform === 'android'){
             v.downloadLink = v.apkDownloadLink;
         }else if(v.appPlatform === 'ios'){
@@ -88,15 +96,15 @@ function getTasks(pageNumber){
     });
     var template = "{{~it :value:index}}\
         <tr>\
-            <td>{{=value.appName}}</td>\
-            <td> <div class=\"chip red accent-2\">{{=value.appPlatform}}</div></td>\
-            <td> <div class=\"chip  teal darken-2\">{{=value.appBuildType}}</div></td>\
-            <td> <div class=\"chip  amber lighten-2\">{{=value.appVersion}}</div></td>\
-            <td>{{=value.startTime}}</td>\
-            <td><a href=/yigomobile/public/log/{{=value.id}}.log>{{=value.status}}</a></td>\
-            <td><a href={{=value.downloadLink}}>在线安装</a></td>\
-            <td><a href=/yigomobile/add?taskid={{=value.id}}>再次打包</a></td>\
-            <td><a class ='delete-task' href='#' apihref=/yigomobile/api/task/{{=value.id}}>删除任务</a></td>\
+            <td class='appName' >{{=value.appName}}</td>\
+            <td class='appPlatform' > <div class=\"chip red accent-2\">{{=value.appPlatform}}</div></td>\
+            <td class='appBuildType' > <div class=\"chip  teal darken-2\">{{=value.appBuildType}}</div></td>\
+            <td class='appVersion' > <div class=\"chip  amber lighten-2\">{{=value.appVersion}}</div></td>\
+            <td class='startTime' >{{=value.startTime}}</td>\
+            <td class='appStatus' ><a href=/yigomobile/public/log/{{=value.id}}.log>{{=value.status}}</a></td>\
+            <td class='downloadLink' ><a href={{=value.downloadLink}}>在线安装</a></td>\
+            <td class='pack-again' ><a href=/yigomobile/add?taskid={{=value.id}}>再次打包</a></td>\
+            <td class='delete-task' ><a class ='delete-task' href='#' apihref=/yigomobile/api/task/{{=value.id}}>删除任务</a></td>\
         </tr>>\
     {{~}}";
     var tempFn = doT.template(template);

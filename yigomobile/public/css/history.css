@@ -1,3 +1,29 @@
 .teal.darken-2 {
     color: white;
 }
+@media (max-width: 560px) {
+    .delete-task,
+    .pack-again,
+    .appBuildType,
+    .appStatus,
+    .appVersion,
+    table > thead > tr > td:nth-child(3),
+    table > thead > tr > td:nth-last-child(1),
+    table > thead > tr > td:nth-last-child(2),
+    table > thead > tr > td:nth-last-child(4),
+    table > thead > tr > td:nth-last-child(6)
+    {
+        display: none;
+    }
+    .startTime{
+        max-width: 10%;
+        width: 10%;
+
+    }
+    .appVersion,
+    .appPlatform{
+        max-width: 10%;
+        width: 10%;
+
+    }
+}
