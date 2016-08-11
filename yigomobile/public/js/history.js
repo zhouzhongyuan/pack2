@@ -83,6 +83,12 @@ function getTasks(pageNumber){
             case 'finished':
                 v.status = '打包成功';
                 break;
+            case 'waiting':
+                v.status = '等待中';
+                break;
+            case 'rejected':
+                v.status = '打包失败';
+                break;
         }
         if(v.appPlatform === 'android'){
             v.downloadLink = v.apkDownloadLink;
