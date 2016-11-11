@@ -56,7 +56,7 @@ block content
             p
                 input(type='radio' class="with-gap" id='ios' value='ios' name='appPlatform'  checked= task.appPlatform=='ios')
                 label(for='ios') iOS
-        div(class='row input-field')
+        div(class='row input-field',style='display:none;')
             i(class='material-icons prefix') description
             textarea(class='materialize-textarea' name='appDescription' id='appDescription' length="500"  value=task.appDescription)
             label(for='appDescription') 应用描述
@@ -89,7 +89,7 @@ block content
                 input(type='radio' class="with-gap" id='index' value='index.html' name='appContent' checked='checked')
                 label(for='index') 首页[默认]
             p
-                input(type='radio' class="with-gap" id='splash' value='js/lib/project-sida/splash.html' name='appContent')
+                input(type='radio' class="with-gap" id='splash' value='js/lib/project-sida/splash.html' name='appContent' )
                 label(for='splash') 引导页
         div(class='col s12 row input-field') 是否发布
             p
@@ -99,47 +99,47 @@ block content
                 input(type='radio' class="with-gap" id='appReleaseYes' value='true' name='appRelease' checked= task.appRelease===true )
                 label(for='appReleaseYes') 发布
         li(class='appPlugin') 插件选择
-            div(class='selector')
-                input(type='button' value='全选' class='waves-effect waves-light btn all-selector')
-                input(type='button' value='全不选' class='waves-effect waves-light btn all-not-selector')
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-app-version' id='cordova-plugin-app-version')
+            //div(class='selector')
+            //    input(type='button' value='全选' class='waves-effect waves-light btn all-selector')
+            //    input(type='button' value='全不选' class='waves-effect waves-light btn all-not-selector')
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-app-version' id='cordova-plugin-app-version' checked='checked')
                 label(for='cordova-plugin-app-version') cordova-plugin-app-version
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-camera' id='cordova-plugin-camera')
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-camera' id='cordova-plugin-camera' checked='checked')
                 label(for='cordova-plugin-camera') cordova-plugin-camera
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-device' id='cordova-plugin-device' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-device' id='cordova-plugin-device' checked='checked')
                 label(for='cordova-plugin-device') cordova-plugin-device
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file' id='cordova-plugin-file' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file' id='cordova-plugin-file' checked='checked')
                 label(for='cordova-plugin-file') cordova-plugin-file
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-opener2' id='cordova-plugin-file-opener2')
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-opener2' id='cordova-plugin-file-opener2' checked='checked')
                 label(for='cordova-plugin-file-opener2') cordova-plugin-file-opener2
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-transfer' id='cordova-plugin-file-transfer' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-transfer' id='cordova-plugin-file-transfer' checked='checked')
                 label(for='cordova-plugin-file-transfer') cordova-plugin-file-transfer
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-inappbrowser' id='cordova-plugin-inappbrowser')
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-inappbrowser' id='cordova-plugin-inappbrowser' checked='checked')
                 label(for='cordova-plugin-inappbrowser') cordova-plugin-inappbrowser
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-whitelist' id='cordova-plugin-whitelist' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-whitelist' id='cordova-plugin-whitelist' checked='checked')
                 label(for='cordova-plugin-whitelist') cordova-plugin-whitelist
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-x-socialsharing' id='cordova-plugin-x-socialsharing' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-x-socialsharing' id='cordova-plugin-x-socialsharing' checked='checked')
                 label(for='cordova-plugin-x-socialsharing') cordova-plugin-x-socialsharing
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='phonegap-plugin-barcodescanner' id='phonegap-plugin-barcodescanner' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='phonegap-plugin-barcodescanner' id='phonegap-plugin-barcodescanner' checked='checked')
                 label(for='phonegap-plugin-barcodescanner') phonegap-plugin-barcodescanner
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='ionic-plugin-keyboard' id='ionic-plugin-keyboard' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='ionic-plugin-keyboard' id='ionic-plugin-keyboard' checked='checked')
                 label(for='ionic-plugin-keyboard') ionic-plugin-keyboard(修复软键盘遮挡)
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-network-information' id='cordova-plugin-network-information' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-network-information' id='cordova-plugin-network-information' checked='checked')
                 label(for='cordova-plugin-network-information') cordova-plugin-network-information(检测网络情况,默认必选)
-            p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-dialogs' id='cordova-plugin-dialogs' )
+            p(style='display:none;')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-dialogs' id='cordova-plugin-dialogs' checked='checked')
                 label(for='cordova-plugin-dialogs') cordova-plugin-dialogs(原生弹窗,默认必选)
             p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-geolocation' id='cordova-plugin-geolocation' )
