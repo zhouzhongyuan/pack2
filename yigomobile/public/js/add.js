@@ -14,6 +14,92 @@ $(document).ready(function(){
     });
     //alert("网站正在升级中……\n请勿打包\n若情况紧急,请联系QQ 759754385(周中原)")
     //alert("如果打包不成功,请加入QQ群 543503476(app)")
+
+
+    //判断plugin是否checked
+    //GET plugin info
+    //处理Plugin
+    var currentUrl = window.location.href;
+    var taskId = currentUrl.match(/\d*$/)[0];
+    if (taskId) {
+        var queryUrl = `https://dev.bokesoft.com/yigomobile/api/task/${taskId}`;
+        // fetch(queryUrl)
+        //     .then((data) => {
+        //         console.log(data.body);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+        $.ajax({
+            url:queryUrl,
+            success:function (data) {
+                console.log(data);
+                var pluginListOfAdded = data.appPlugin;
+
+                //为了兼容以前的"cordova-plugin-app-version,cordova-plugin-camera,cordova-plugin-device"类型
+                try {
+                    pluginListOfAdded = JSON.parse(pluginListOfAdded);
+                }catch (e){
+                    pluginListOfAdded = pluginListOfAdded.split(',');
+                }
+                //分离plugin name 和 Variable
+                for( var i = 0; i < pluginListOfAdded.length; i++){
+                    if (pluginListOfAdded[i].indexOf('?') > -1) {
+
+                        var nameAndVariable = pluginListOfAdded[i].split('?');
+                        var Variable = nameAndVariable[1].split('=');
+                        pluginListOfAdded[i] = {
+                            name:nameAndVariable[0],
+                            variable:{
+                                key:Variable[0],
+                                value:Variable[1]
+                            }
+                        };
+
+                    }else{
+                        pluginListOfAdded[i] = {
+                            name:pluginListOfAdded[i]
+                        };
+                    }
+                }
+                console.log(pluginListOfAdded);
+                //取得页面上所有的plugin
+                var pluginListOfPage = $('[name="appPlugin"]');
+
+                for (var i = 0; i < pluginListOfPage.length; i++){
+                    var plugin = $(pluginListOfPage[i]).attr('value');
+                    //判断是否checked
+                    for(var j = 0; j < pluginListOfAdded.length; j++){
+                        if (plugin === pluginListOfAdded[j].name){
+                            //选择
+                            $(pluginListOfPage[i]).prop('checked',true);
+                            //自动填充Key
+                            if (pluginListOfAdded[j].variable){
+                                var closestInputName = `${pluginListOfAdded[j].name}_${pluginListOfAdded[j].variable.key}`;
+
+                                var closestInput = $(`[name="${closestInputName}"]`);
+                                $(closestInput[0]).val(pluginListOfAdded[j].variable.value);
+                            }
+
+
+                            break;
+                        }
+                    }
+                }
+
+
+            },
+        });
+
+
+
+    }
+
+
+
+
+
+
     }
 );
 function submitTask(){

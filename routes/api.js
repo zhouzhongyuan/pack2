@@ -30,10 +30,9 @@ router.get('/tasks', koaBody, function *(next) {
 router.get('/task/:id',function*(next){
     var queryStatement = {"id":this.params.id};
     var promise = querylib.queryOne(queryStatement);
-    var corender = co.wrap(this.render);
     yield promise
         .then(_.bind(function(tasks) {
-            this.body = tasks;
+            this.body = tasks.toJSON();
         },this))
         .then(function(){
             console.log('task render finished!');
@@ -63,7 +62,7 @@ router.post('/task', koaBody, function*(next){
     newTask.appDescription = packConfig.appDescription;
     newTask.appIcon = packConfig.appIcon;
     newTask.appContent = packConfig.appContent;
-    newTask.appPlugin = packConfig.appPlugin || packConfig['appPlugin[]'];
+    newTask.appPlugin = JSON.stringify(packConfig.appPlugin || packConfig['appPlugin[]']);
     newTask.projectSvnUser = packConfig.projectSvnUser;
     newTask.projectSvnPassword = packConfig.projectSvnPassword;
     newTask.appPlatform = packConfig.appPlatform;
