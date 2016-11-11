@@ -90,14 +90,18 @@
 <div id="pc">
     <div class="name"><%= appName %></div>
     <div class="download-all">
-        <div class="android" >
-            <a id="android-fake-btn" href="<%= androidLink %>">Android</a>
-            <p class="vernew">最新版本： <span><%= androidVersion %></span> | 发布日期： <span><%= androidUpdateTime %></span></p>
-        </div>
-        <div class="ios">
-            <a id="ios-fake-btn" href="<%= iosLink %>">iOS</a>
-            <p class="vernew">最新版本： <span><%= iosVersion %></span></span> | 发布日期： <span><%= iosUpdateTime %></span></p>
-        </div>
+        <% if (typeof(androidLink) !== "undefined") { %>
+            <div class="android" >
+                <a id="android-fake-btn" href="<%= androidLink %>">Android</a>
+                <p class="vernew">最新版本： <span><%= androidVersion %></span> | 发布日期： <span><%= androidUpdateTime %></span></p>
+            </div>
+        <% } %>
+        <% if (typeof(iosLink) !== "undefined") { %>
+            <div class="ios">
+                <a id="ios-fake-btn" href="<%= iosLink %>">iOS</a>
+                <p class="vernew">最新版本： <span><%= iosVersion %></span></span> | 发布日期： <span><%= iosUpdateTime %></span></p>
+            </div>
+        <% } %>
     </div>
 </div>
 <div id="qrcode">
@@ -131,12 +135,16 @@
         };
     }();
     if (os.isAndroid) {
-        document.getElementsByClassName('ios')[0].style.display = 'none';
         document.getElementById('qrcode').style.display = 'none';
+        if(document.getElementsByClassName('ios')[0]){
+            document.getElementsByClassName('ios')[0].style.display = 'none';
+        }
     }
     else if (os.isPhone) {
-        document.getElementsByClassName('android')[0].style.display = 'none';
         document.getElementById('qrcode').style.display = 'none';
+        if(document.getElementsByClassName('android')[0]){
+            document.getElementsByClassName('android')[0].style.display = 'none';
+        }
     }
 </script>
 </body>
