@@ -42,6 +42,7 @@ block content
                 input(type='text' class="validate" name='appPackageName' id='appPackageName' placeholder='com.bokesoft.oa' required='required' value=task.appPackageName)
                 label(for='appPackageName' data-error="wrong" data-success="right") 包名
         div(class='col s12 row input-field') 打包类型
+            span(class='red-text ') ( iOS必须选择release)
             p
                 input(type='radio' class="with-gap" id='release' value='release' name='appBuildType' checked= task.appBuildType=='release')
                 label(for='release') release
@@ -69,6 +70,7 @@ block content
             i(class='material-icons prefix') tag_faces
             input(type='text' class='validate' name='appIcon' id='appIcon' value=task.appIcon)
             label(for='appIcon') app图标
+                span(class='red-text ') ( 图片大小必须是120*120 )
         <!-- Modal Trigger -->
         button( type='button' value='打包' class=' btn waves-effect waves-light modal-trigger' href="#modal1") 打包
             i(class="material-icons right") send
@@ -101,37 +103,37 @@ block content
                 input(type='button' value='全选' class='waves-effect waves-light btn all-selector')
                 input(type='button' value='全不选' class='waves-effect waves-light btn all-not-selector')
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-app-version' id='cordova-plugin-app-version' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-app-version' id='cordova-plugin-app-version')
                 label(for='cordova-plugin-app-version') cordova-plugin-app-version
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-camera' id='cordova-plugin-camera' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-camera' id='cordova-plugin-camera')
                 label(for='cordova-plugin-camera') cordova-plugin-camera
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-device' id='cordova-plugin-device' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-device' id='cordova-plugin-device' )
                 label(for='cordova-plugin-device') cordova-plugin-device
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file' id='cordova-plugin-file' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file' id='cordova-plugin-file' )
                 label(for='cordova-plugin-file') cordova-plugin-file
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-opener2' id='cordova-plugin-file-opener2' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-opener2' id='cordova-plugin-file-opener2')
                 label(for='cordova-plugin-file-opener2') cordova-plugin-file-opener2
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-transfer' id='cordova-plugin-file-transfer' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-file-transfer' id='cordova-plugin-file-transfer' )
                 label(for='cordova-plugin-file-transfer') cordova-plugin-file-transfer
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-inappbrowser' id='cordova-plugin-inappbrowser' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-inappbrowser' id='cordova-plugin-inappbrowser')
                 label(for='cordova-plugin-inappbrowser') cordova-plugin-inappbrowser
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-whitelist' id='cordova-plugin-whitelist' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-whitelist' id='cordova-plugin-whitelist' )
                 label(for='cordova-plugin-whitelist') cordova-plugin-whitelist
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-x-socialsharing' id='cordova-plugin-x-socialsharing' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-x-socialsharing' id='cordova-plugin-x-socialsharing' )
                 label(for='cordova-plugin-x-socialsharing') cordova-plugin-x-socialsharing
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='phonegap-plugin-barcodescanner' id='phonegap-plugin-barcodescanner' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='phonegap-plugin-barcodescanner' id='phonegap-plugin-barcodescanner' )
                 label(for='phonegap-plugin-barcodescanner') phonegap-plugin-barcodescanner
             p
-                input(type='checkbox' name='appPlugin' class='filled-in' value='ionic-plugin-keyboard' id='ionic-plugin-keyboard' checked='checked')
+                input(type='checkbox' name='appPlugin' class='filled-in' value='ionic-plugin-keyboard' id='ionic-plugin-keyboard' )
                 label(for='ionic-plugin-keyboard') ionic-plugin-keyboard(修复软键盘遮挡)
             p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-geolocation' id='cordova-plugin-geolocation' )
@@ -160,10 +162,10 @@ block content
                     label(for='Cordova_QQ_API_KEY') QQ_APP_ID
             h4 android 插件
             div(class='col s12 row variable-checkbox')
-                input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android/' id='cordova-plugin-geoloaction-baidu-android')
+                input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android' id='cordova-plugin-geoloaction-baidu-android')
                 label(for='cordova-plugin-geoloaction-baidu-android' class='col s8') cordova-plugin-geoloaction-baidu-android（Android 百度增强定位,仅限车掌柜使用)
                 div(class='input-field col s4' )
-                    input(type='text' class='validate input-field' name='cordova-plugin-geoloaction-baidu-android_API_KEY' value='4z5k9DG1QUIBWF9yEfb4Qho6' variable-key='API_KEY' id='cordova-plugin-geoloaction-baidu-android_API_KEY')
+                    input(type='text' class='validate input-field' name='cordova-plugin-geoloaction-baidu-android_API_KEY' placeholder='4z5k9DG1QUIBWF9yEfb4Qho6' variable-key='API_KEY' id='cordova-plugin-geoloaction-baidu-android_API_KEY')
                     label(for='cordova-plugin-geoloaction-baidu-android_API_KEY') API_KEY
             p
                 input(type='checkbox' name='appPlugin' class='filled-in' value='cordova-plugin-crosswalk-webview' id='cordova-plugin-crosswalk-webview')
