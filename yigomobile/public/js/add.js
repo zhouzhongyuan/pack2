@@ -23,13 +23,6 @@ $(document).ready(function(){
     var taskId = currentUrl.match(/\d*$/)[0];
     if (taskId) {
         var queryUrl = `https://dev.bokesoft.com/yigomobile/api/task/${taskId}`;
-        // fetch(queryUrl)
-        //     .then((data) => {
-        //         console.log(data.body);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
         $.ajax({
             url:queryUrl,
             success:function (data) {
@@ -67,9 +60,13 @@ $(document).ready(function(){
                 var pluginListOfPage = $('[name="appPlugin"]');
 
                 for (var i = 0; i < pluginListOfPage.length; i++){
-                    var plugin = $(pluginListOfPage[i]).attr('value');
+                    var plugin = $(pluginListOfPage[i]).attr('id');
                     //判断是否checked
                     for(var j = 0; j < pluginListOfAdded.length; j++){
+                        var customPluginReg = /^https?:\/\/(www\.)?/i;
+                        if(customPluginReg.test(pluginListOfAdded[j].name)){
+                            $('#cordova-plugin-custom').val(pluginListOfAdded[j].name);
+                        }
                         if (plugin === pluginListOfAdded[j].name){
                             //选择
                             $(pluginListOfPage[i]).prop('checked',true);
@@ -104,6 +101,17 @@ $(document).ready(function(){
 );
 function submitTask(){
     var data = $('form#taskAddForm').serializeObject();
+    var pluginList = data.appPlugin;
+    console.log(data);
+    pluginList.forEach(function (item, index) {
+        if(!item){
+            pluginList.splice(index,1)
+        }
+        if(item === 'https://github.com/zhouzhongyuan/cordova-plugin-native'){
+            pluginList[index] = 'cordova-plugin-native';
+        }
+    });
+
     console.log(data);
     var config = {
         url:'api/task',

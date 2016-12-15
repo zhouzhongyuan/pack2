@@ -157,18 +157,18 @@ function monitor(){
         busy=false;
     })
         .catch(function(e,winston){
-        tt.status = "rejected";
-        tt.save();
-        var path = require('path');
-        var appDir = path.dirname(require.main.filename);
-        process.chdir(appDir);
-        //清空working
-
-        tt.winston.info('错误如下：');
-        var err = e.toString();
-        console.log(err)
-        tt.winston.info(err);
-        busy=false;
+            tt.status = "rejected";
+            tt.save();
+            var path = require('path');
+            var appDir = path.dirname(require.main.filename);
+            process.chdir(appDir);
+            //清空working
+            console.log(process.cwd());
+            tt.winston.info('错误如下：');
+            var err = e.toString();
+            console.log(err)
+            tt.winston.info(err);
+            busy=false;
     });
 }
 
