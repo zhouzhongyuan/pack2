@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/koa-app'); // connec
 var taskModel  = require('./models/task');
 var releaseModel = require('./models/release');
 
-var pack = require('cordova-pack');
+var pack = require('cordova-pack-old');
 
 var busy = false;
 
