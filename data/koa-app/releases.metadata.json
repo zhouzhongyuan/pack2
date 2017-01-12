@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"koa-app.releases"},{"v":1,"unique":true,"key":{"appPackageName":1},"name":"appPackageName_1","ns":"koa-app.releases","background":true}]}
