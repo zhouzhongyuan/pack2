@@ -123,9 +123,9 @@ function submitTask(){
         if(!item){
             pluginList.splice(index,1)
         }
-        if(item === 'https://github.com/zhouzhongyuan/cordova-plugin-native'){
-            pluginList[index] = 'cordova-plugin-native';
-        }
+        // if(item === 'https://github.com/zhouzhongyuan/cordova-plugin-native'){
+        //     pluginList[index] = 'cordova-plugin-native';
+        // }
     });
     console.log(data);
     // 如果没有com-sarriaroman-photoviewer，添加
