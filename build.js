@@ -169,6 +169,11 @@ function monitor(){
             console.log(err)
             tt.winston.info(err);
             busy=false;
+            // // 如果遇到Error code 1/2 错误，重启服务器
+            // if(/Error code 1/.test(err)){
+            //     process.exit(1);
+            // }
+
     });
 }
 

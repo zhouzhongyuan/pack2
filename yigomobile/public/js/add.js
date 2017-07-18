@@ -12,7 +12,7 @@ $(document).ready(function(){
     $('.all-not-selector').on('click',function(){
         $( ".appPlugin :checkbox " ).removeAttr('checked');
     });
-    //alert("网站正在升级中……\n请勿打包\n若情况紧急,请联系QQ 759754385(周中原)")
+    // alert("\"打包类型\"为debug时,\n会出现服务器地址输入页面,\n用于手动输入服务地址, \n非大猫项目直接点击启动即可")
     //alert("如果打包不成功,请加入QQ群 543503476(app)")
 
 
@@ -91,10 +91,25 @@ $(document).ready(function(){
 
 
     }
+    // console.log($('#ios').attr('checked'));
+    if( $('#ios').attr('checked') ){
+        $('#debug').attr('disabled', true);
+        if( $('#debug').attr('checked') ){
+            $('#debug').attr('checked', false)
+            $('#release').attr('checked', true)
+        }
+    }
+    $("input[name='appPlatform']").on('click', function (e) {
+        var value = $(this).val();
+        if(value === 'ios'){
+            $('#debug').attr('disabled', true);
+            $('#debug').attr('checked', false);
+            $('#release').attr('checked', true);
+        }else{
+            $('#debug').attr('disabled', false);
 
-
-
-
+        }
+    });
 
 
     }
@@ -104,6 +119,7 @@ function submitTask(){
     var pluginList = data.appPlugin;
     console.log(data);
     pluginList.forEach(function (item, index) {
+        // 若为空，删除掉此item
         if(!item){
             pluginList.splice(index,1)
         }
@@ -111,6 +127,12 @@ function submitTask(){
             pluginList[index] = 'cordova-plugin-native';
         }
     });
+    console.log(data);
+    // 如果没有com-sarriaroman-photoviewer，添加
+    var pluginOfPhotoviewer = 'com-sarriaroman-photoviewer';
+    if(pluginList.indexOf(pluginOfPhotoviewer) < 0){
+        pluginList.push(pluginOfPhotoviewer);
+    }
 
     console.log(data);
     var config = {
@@ -150,3 +172,5 @@ function combinePlugin(){
   });
 
 }
+
+

@@ -8,7 +8,7 @@ var serve = require('koa-static');
 app.use(serve('.'));
 //Querystring
 require('koa-qs')(app)
-//views
+//viewsb
 var views = require('koa-views');
 app.use(views('views', {
     root: __dirname+'views',

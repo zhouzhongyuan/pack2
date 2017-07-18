@@ -4,7 +4,8 @@
   "dependencies": {
     "body-parser": "1.15.0",
     "co": "4.6.0",
-    "cordova-pack-old": "^0.3.0",
+    "cordova-lib": "^6.0.0",
+    "cordova-pack-old": "^0.3.5",
     "hammer": "0.0.5",
     "jade": "1.11.0",
     "jquery": "2.2.1",
