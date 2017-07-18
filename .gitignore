@@ -57,3 +57,4 @@ working/
 yigomobile/public/release
 plugin/old_plugins
 del*
+.DS_Store
