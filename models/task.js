@@ -24,6 +24,7 @@ var taskSchema   = new Schema({
     ipaLink: String,
     yigoVersion: Number,
     appRelease: Boolean,
+    androidTargetSdkVersion: Number,
 
 });
 

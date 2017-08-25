@@ -127,6 +127,9 @@ function submitTask(){
         //     pluginList[index] = 'cordova-plugin-native';
         // }
     });
+    if(!data.androidTargetSdkVersion){
+        data.androidTargetSdkVersion = 22;
+    }
     console.log(data);
     // 如果没有com-sarriaroman-photoviewer，添加
     var pluginOfPhotoviewer = 'com-sarriaroman-photoviewer';

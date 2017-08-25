@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    var paginationEl = document.getElementsByClassName('pagination')[0];
+
     getTasks();
     pagination(1);
     setInterval(getTasks,100*1000);

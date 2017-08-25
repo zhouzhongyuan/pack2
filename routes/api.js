@@ -73,6 +73,7 @@ router.post('/task', koaBody, function*(next){
     newTask.appIosMp = packConfig.appIosMp;
     newTask.yigoVersion = packConfig.yigoVersion;
     newTask.appRelease = packConfig.appRelease;
+    newTask.androidTargetSdkVersion = packConfig.androidTargetSdkVersion;
 
 
     yield newTask.save(function (err) {

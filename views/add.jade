@@ -167,6 +167,15 @@ block content
                 div(class='input-field col s4' )
                     input(type='text' class='validate input-field' name='Cordova_QQ_API_KEY' value='1105143090' variable-key='QQ_APP_ID' id='Cordova_QQ_API_KEY')
                     label(for='Cordova_QQ_API_KEY') QQ_APP_ID
+            div(class='col s12 row input-field') android设置
+                p
+                    input(type='radio' class="with-gap" id='targetSdkVersion22' value='22' name='androidTargetSdkVersion' checked= task.androidTargetSdkVersion == 22)
+                    label(for='targetSdkVersion22') 22
+                p
+                    input(type='radio' class="with-gap" id='targetSdkVersion23' value='23' name='androidTargetSdkVersion' checked= task.androidTargetSdkVersion == 23)
+                    label(for='targetSdkVersion23') 23
+
+
             h4 android 插件
             div(class='col s12 row variable-checkbox')
                 input(type='checkbox' name='appPlugin' class='filled-in col s4' value='cordova-plugin-geoloaction-baidu-android' id='cordova-plugin-geoloaction-baidu-android')
