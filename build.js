@@ -163,7 +163,7 @@ function monitor(){
             var appDir = path.dirname(require.main.filename);
             process.chdir(appDir);
             //清空working
-            console.log(process.cwd());
+            tt.winston.info(`进入文件夹${process.cwd()}`);
             tt.winston.info('错误如下：');
             var err = e.toString();
             console.log(err)

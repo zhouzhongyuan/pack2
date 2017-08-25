@@ -12,6 +12,7 @@ block content
             i(class='material-icons prefix') link
             input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
             label(for='projectSvn') 项目的Svn
+                span(class='red-text ') ( 文件名/文件夹名 不得包含中文、"("、")"等)
         div(class='col s12 row input-field') 平台
             p
                 input(type='radio' class="with-gap" id='yigoVersion1' value='1.6' name='yigoVersion' checked= task.yigoVersion == '1.6')
