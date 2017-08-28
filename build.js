@@ -179,7 +179,7 @@ function monitor(){
 
 var buildInterval =null;// setInterval(monitor,20*1000);
 
-module.exports= {
+const packUtil = {
     start : function () {
         monitor();
         buildInterval = setInterval(monitor, 20 * 1000);
@@ -191,3 +191,6 @@ module.exports= {
         return busy;
     }
 }
+module.exports = packUtil;
+
+packUtil.start();

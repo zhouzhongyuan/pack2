@@ -1,6 +1,10 @@
 {
   "name": "pack2",
   "version": "0.0.1",
+  "scripts": {
+    "start:site": "node app.js",
+    "start:pack": "node build.js"
+  },
   "dependencies": {
     "body-parser": "1.15.0",
     "co": "4.6.0",

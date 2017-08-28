@@ -5,6 +5,17 @@
 - 首先要开启mongo服务器
 
 
+## Start
+
+Start the website
+```
+npm run start:site
+```
+Start the pack server
+```
+npm run start:pack
+```
+
 ## 系统要求
 
 os  |	command

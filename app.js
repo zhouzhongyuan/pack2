@@ -1,7 +1,6 @@
 "use strict";
 var koa = require('koa');
 var jade = require('jade');
-var monitor = require('./build');
 var app = koa();
 //可用目录
 var serve = require('koa-static');
@@ -28,4 +27,3 @@ app.use(router.routes())
 
 //port
 app.listen(3000);
-monitor.start();
