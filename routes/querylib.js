@@ -2,7 +2,7 @@
 var task  = require('../models/task');
 var querylib ={};
 querylib.queryAll = function(data) {
-    return new Promise(function(resolver,reject){
+    return new Promise(function(resolve,reject){
         task.find(
             {},
             'id appName startTime status apkDownloadLink ipaLink appPlatform appBuildType appVersion',
@@ -12,15 +12,15 @@ querylib.queryAll = function(data) {
                 sort: {id: -1}
             },
             function (err, tasks) {
-            if(err) {
-                reject(err);
-                return;
-            }
-            if(tasks.length==0) {
-                reject('query no data');
-                return;
-            }
-            resolver(tasks);
+                if(err) {
+                    reject(err);
+                    return;
+                }
+                if(tasks.length==0) {
+                    reject('query no data');
+                    return;
+                }
+                resolve(tasks);
         });
     })
 };
