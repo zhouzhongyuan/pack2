@@ -1,4 +1,6 @@
-"use strict";
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/koa-app');
+
 var koa = require('koa');
 var jade = require('jade');
 var app = koa();
