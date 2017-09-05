@@ -93,9 +93,17 @@ function getTasks(pageNumber){
                 break;
         }
         if(v.appPlatform === 'android'){
-            v.downloadLink = v.apkDownloadLink;
+            var s = v.apkDownloadLink;
+            if(/pack2/.test(s)){
+                s = s.match(/(?:pack2)(.*)/)[1];
+            }
+            v.downloadLink = s;
         }else if(v.appPlatform === 'ios'){
             var link = v.ipaLink;
+            if(/pack2/.test(link)){
+                link = link.match(/(?:pack2)(.*)/)[1];
+            }
+
             var reg = new RegExp('^(.+)\/(?:[^/]+)$');
             link = reg.exec(link)[1] + '/index.html';
             v.downloadLink = link;
