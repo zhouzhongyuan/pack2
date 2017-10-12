@@ -4,7 +4,6 @@ var mp = require('../models/mobileProvision');
 var router = require('koa-router')();
 var co  = require('co');
 var _ = require('underscore');
-var monitor = require('../build');
 var querylib = require('./querylib');
 //body
 var koaBody = require('koa-body')({multipart:true});
@@ -85,7 +84,7 @@ router.post('/task', koaBody, function*(next){
     yield next;
 });
 router.get('/busy', function *(next) {
-    this.body = {message: monitor.isBusy()};
+    this.body = {message: 'false' };
     yield next;
 });
 router.delete('/task/:id',function*(next){

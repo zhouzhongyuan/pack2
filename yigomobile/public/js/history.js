@@ -11,7 +11,25 @@ $(document).ready(function(){
 
 //pagination
 function pagination (){
-    "use strict";
+    // add all pagination
+    function addAllPagination(){
+        var config = {
+            url:'api/tasks',
+            async:false,
+            type: 'GET'
+        };
+        var responseData = $.ajax(config).responseJSON;
+        var allPaginationNumber = Math.ceil(responseData.length/10);
+        console.log(allPaginationNumber);
+        var i = 2;
+        var addedPagination = $('#addedPagination');
+        do{
+            addedPagination.append(`<li class="waves-effect"><a href="#!">${i}</a></li>`);
+            i++;
+        } while(i <= allPaginationNumber);
+    }
+
+    addAllPagination();
     var li = $('.pagination').find('li');
     $.each(li,function(i,v){
         v.addEventListener('click',function(e){
