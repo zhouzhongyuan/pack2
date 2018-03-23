@@ -1,29 +1,8 @@
 extends layout
 block link
-    -var selected = '参数';
+    -var selected = '使用说明';
 block content
-    h2(class='status') 车掌柜
-    h3 iOS
-    table(class='striped')
-        thead
-            tr
-                td #
-                td 企业版
-                td App Store版
-        tbody
-            tr
-                td 唯一ID(即包名)
-                td com.bokesoft.ceo
-                td com.CarCEO.CarCEO
-            tr
-                td 百度定位
-                td tsIG8xQr1r3kuHIfcFOfGfGgWaNkXURv
-                td 1xuVCetREsI8B46Fk49My1Elac74mrIn
-            tr
-                td 微信分享
-                td wx0b12e3e1adde0d7f
-                td wxd370fd102cb18581
-            tr
-                td QQ分享
-                td 1105143090
-                td 1105332792
+    div(class='instruction')
+        h2 使用说明
+            h4 1. 第一次进行iOS打包之前，一定要先请顾铭峰帮忙申请mobileprovision.
+            h4 2. svn中任何文件/文件夹的名字不能包含中文

@@ -54,30 +54,15 @@ function processAjax(){
 function taskNumAjax(){
     "use strict";
     var config = {
-        url:'api/tasks',
+        url:'api/taskNumber',
         async:false,
         type: 'GET'
     };
     var responseData = $.ajax(config).responseJSON;
-    _.each(responseData, function(v){
-        v.startTime = (new Date(v.startTime)).toLocaleString();
-    });
-    var count = _.countBy(responseData, 'status');
     var data = {
-        total:responseData.length || 0,
-        finished:count.finished || 0,
-        waiting:count.waiting || 0,
-        accepted:count.accepted || 0,
+        total:responseData.number || 0,
     };
-    if(data.accepted !== 0){
-        //data.showAccepted = true;
-        data.acceptedTask = _.where(responseData, {status: "accepted"})[0];
-    }
-    var template = "<h5>任务信息</h5><table class='striped'><tr><td>任务总数</td><td>{{=it.total}}</td></tr>\
-                    <tr><td>已完成的任务</td><td>{{=it.finished}}</td></tr>\
-                    <tr><td>等待中的任务</td><td>{{=it.waiting}}</td></tr>\
-                    <tr><td>处理中的任务</td><td>{{=it.accepted}}</td></tr></table>\
-                    {{? it.acceptedTask }}正在处理的任务为:<tr><td>{{=it.acceptedTask.appName}}</td><td>提交时间为:{{=it.acceptedTask.startTime}}</td></tr>{{?}}";
+    var template = "<h5>任务信息</h5><table class='striped'><tr><td>任务总数</td><td>{{=it.total}}</td></tr>";
     var tempFn = doT.template(template);
     var html = tempFn(data);
 

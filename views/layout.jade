@@ -21,7 +21,7 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
     block link
         -var selected = '首页'; //default
-    -var menu = { '首页': '/yigomobile/main', '新增': '/yigomobile/add', '历史任务': '/yigomobile/history','参数': '/yigomobile/arguments' };
+    -var menu = { '首页': '/yigomobile/main', '新增': '/yigomobile/add', '历史任务': '/yigomobile/history','使用说明': '/yigomobile/arguments' };
     body
         div(class='navbar-fixed')
             nav(class='teal lighten-2')
@@ -36,6 +36,5 @@ html
                                 li
                                     a(href=val, title=key)= key
                         li()
-                            a(href='/yigomobile/news' title='消息') 消息
-                                span(class="new badge") 1
+                            a(href='/yigomobile/news' title='更新记录') 更新记录
         block content

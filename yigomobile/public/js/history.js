@@ -14,12 +14,12 @@ function pagination (){
     // add all pagination
     function addAllPagination(){
         var config = {
-            url:'api/tasks',
+            url:'api/taskNumber',
             async:false,
             type: 'GET'
         };
         var responseData = $.ajax(config).responseJSON;
-        var allPaginationNumber = Math.ceil(responseData.length/10);
+        var allPaginationNumber = Math.ceil(responseData.number/10);
         console.log(allPaginationNumber);
         var i = 2;
         var addedPagination = $('#addedPagination');

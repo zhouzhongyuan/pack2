@@ -25,6 +25,21 @@ router.get('/tasks', koaBody, function *(next) {
         },this));
     yield next;
 });
+router.get('/taskNumber', koaBody, function *(next) {
+    var data =  this.request.query;
+    var promise = querylib.queryAll(data);
+    var corender = co.wrap(this.render);
+    yield promise
+        .then(_.bind(function(tasks) {
+            this.body = {number: tasks.length};
+        },this))
+        .catch(_.bind(function(err){
+            console.log(err);
+            this.body = err;
+        },this));
+    yield next;
+});
+
 
 router.get('/task/:id',function*(next){
     var queryStatement = {"id":this.params.id};

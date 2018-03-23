@@ -13,13 +13,10 @@ block content
             input(type='url' class='validate' name='projectSvn' id='projectSvn' required='required' palceholder='https://dev.bokesoft.com:9443/svn/mUI/branches/projects/21338/www/js/lib/project-sida' value=task.projectSvn)
             label(for='projectSvn') 项目的Svn
                 span(class='red-text ') ( 文件名/文件夹名 不得包含中文、"("、")"等)
-        div(class='col s12 row input-field') 平台
+        div(class='col s12 row input-field') Yigo版本
             p
                 input(type='radio' class="with-gap" id='yigoVersion1' value='1.6' name='yigoVersion' checked= task.yigoVersion == '1.6')
                 label(for='yigoVersion1') 1.6
-            p
-                input(type='radio' class="with-gap" id='yigoVersion2' value='2' name='yigoVersion'  checked= task.yigoVersion == '2')
-                label(for='yigoVersion2') 2.0
         div(class='input-field' )
             i(class='material-icons prefix') link
             input(type='text' class='validate' name='appVersion' id='appVersion' required='required' value=task.appVersion)

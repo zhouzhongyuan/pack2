@@ -60,6 +60,11 @@ button[type="submit"]{
     width: 50%;
     margin: 20px auto;
 }
+.log,
+.instruction{
+    width: 90%;
+    margin: 20px auto;
+}
 .status-free:before,
 .status-busy:before{
     background-color: #1BC656;
