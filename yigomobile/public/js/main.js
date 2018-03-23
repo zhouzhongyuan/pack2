@@ -31,8 +31,10 @@ function osAjax(){
     var htmlObj = $.ajax(config);
     var busy = $('.os');
     var data = htmlObj.responseJSON;
-    var template = "<h5>服务器信息</h5><table class='striped'><tr><td>可用内存</td><td>{{=it.freemem}}</td></tr>\
-            <tr><td>总内存</td><td>{{=it.totalmem}}</td></tr>\
+    data.freemem = parseInt(data.freemem/1000000, 10);
+    data.totalmem = parseInt(data.totalmem/1000000, 10);
+    var template = "<h5>服务器信息</h5><table class='striped'><tr><td>可用内存</td><td>{{=it.freemem}}MB</td></tr>\
+            <tr><td>总内存</td><td>{{=it.totalmem}}MB</td></tr>\
             <tr><td>操作系统</td><td>{{=it.type}}</td></tr></table>";
     var tempFn = doT.template(template);
     var html = tempFn(data);
@@ -62,7 +64,12 @@ function taskNumAjax(){
     var data = {
         total:responseData.number || 0,
     };
-    var template = "<h5>任务信息</h5><table class='striped'><tr><td>任务总数</td><td>{{=it.total}}</td></tr>";
+
+    var startTime = new Date(1448441213552);
+    var nowTime = new Date();
+    var totalDay = parseInt((nowTime - startTime)/(1000*60*60*24), 10);
+    data.totalDay = totalDay;
+    var template = "<div>我们已经为<em id='totalNumber'>{{=it.total}}</em>个任务打包了！</div><div>我已经运行<em id='totalDay'>{{=it.totalDay}}</em>天了!</div>";
     var tempFn = doT.template(template);
     var html = tempFn(data);
 

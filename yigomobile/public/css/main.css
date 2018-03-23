@@ -60,6 +60,14 @@ button[type="submit"]{
     width: 50%;
     margin: 20px auto;
 }
+.taskNum{
+    margin-bottom: 100px;
+    text-align: center;
+}
+.taskNum > div{
+    padding-top: 100px;
+}
+
 .log,
 .instruction{
     width: 90%;
@@ -116,3 +124,11 @@ label.s8{
     left: 0!important;
 }
 
+#totalNumber{
+    color: green;
+    font-size: 100px;
+}
+#totalDay{
+    color: red;
+    font-size: 100px;
+}
